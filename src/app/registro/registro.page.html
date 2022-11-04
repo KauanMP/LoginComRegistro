@@ -5,30 +5,47 @@
 </ion-header>
 
 <ion-content>
-  <ion-item>
-    <ion-label>Registro</ion-label>
-  </ion-item>
 
   <ion-list>
+    <ion-item color="warning">
+      <ion-label class="centralizarTexto">Registro</ion-label>
+    </ion-item>
+    <!--fim-->
     <ion-item>
-      <ion-label>Nome</ion-label>
+      <ion-label position="floating">Nome</ion-label>
       <ion-input placeholder="Seu Nome"></ion-input>
     </ion-item>
+    <!--fim-->
     <ion-item>
-      <ion-label>E-mail</ion-label>
-      <ion-input type="email" placeholder="Exemplo@Gmail.com"></ion-input>
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input type="email" ngModel email placeholder="Exemplo@Gmail.com"></ion-input>
+      <ion-note slot="helper">Enter a valid email</ion-note>
+      <ion-note slot="error">Invalid email</ion-note>
     </ion-item>
+    <!--fim-->
     <ion-item>
-      <ion-label>CPF</ion-label>
+      <ion-label position="floating">CPF</ion-label>
       <ion-input placeholder="123.456.789-01"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label>Senha</ion-label>
-      <ion-input placeholder="Digite a sua senha" type="password"></ion-input>
+    <!--fim-->
+    <ion-item counter="true" fill="clear">
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input maxlength="15" [clearInput]="true" placeholder="Digite a sua senha" type="password"></ion-input>
     </ion-item>
+    <!--fim-->
     <ion-item>
-      <ion-label>Confirmar Senha</ion-label>
-      <ion-input placeholder="Repita sua senha" type="password"></ion-input>
+      <ion-label position="floating">Confirmar Senha</ion-label>
+      <ion-input [clearInput]="true" placeholder="Repita sua senha" type="password"></ion-input>
     </ion-item>
   </ion-list>
+
+<ion-grid>
+  <ion-row class="ion-centralizar">
+    <ion-button fill="clear"><u>Entrar</u></ion-button>
+  </ion-row>
+  <ion-row class="ion-centralizar">
+      <ion-label>Já tem uma conta?</ion-label>
+  </ion-row>
+</ion-grid>
+
 </ion-content>
