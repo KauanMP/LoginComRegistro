@@ -11,7 +11,6 @@ export class LoginPage implements OnInit {
   formLogin = this.formBuilder.group({
     email:['', Validators.compose([Validators.required, Validators.email])],
     senha:['', Validators.compose([Validators.required, Validators.minLength(6)])],
-    
   });
 
   mensagensErro = {

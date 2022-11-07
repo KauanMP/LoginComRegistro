@@ -6,18 +6,18 @@
 
 <ion-content>
 
-  <ion-item>
-    <ion-label>Login</ion-label>
-  </ion-item>
   <ion-list>
+      <ion-item color="warning">
+        <ion-label class="centralizarTexto">Login</ion-label>
+      </ion-item>
     <form [formGroup]="formLogin">
       <ion-item>
-        <ion-label>E-mail</ion-label>
-        <ion-input type="email" formControlNome="email"></ion-input>
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input placeholder="abc@gmail.com" type="email" formControlNome="email"></ion-input>
       </ion-item>
-    <ion-item>
-      <ion-label>Senha</ion-label>
-      <ion-input type="password" formControlName="Senha"></ion-input>
+    <ion-item counter="true" fill="clear">
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input maxlength="15" [clearInput]="true" placeholder="Digite a sua senha" type="password" formControlName="Senha"></ion-input>
     </ion-item>
   </form>
   </ion-list>
@@ -26,7 +26,7 @@
       <ion-button fill="clear"><u>Entrar</u></ion-button>
     </ion-row>
     <ion-row class="ion-centralizar">
-      <ion-label>Não tem uma conta?</ion-label>
+      <ion-label><a href="src\app\registro\registro.page.html" class="noDecoration">Não tem uma conta?</a></ion-label>
   </ion-row>
   </ion-grid>
 
