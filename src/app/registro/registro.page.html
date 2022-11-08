@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-img src="https://c.pxhere.com/photos/fe/a6/photo-1618584.jpg!d" alt="#"></ion-img>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item color="warning">
+    <ion-label class="centralizarTexto"><strong>Registro</strong></ion-label>
+  </ion-item>
+  <!--fim-->
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Nome:</ion-label>
+      <ion-input placeholder="Seu Nome"></ion-input>
+    </ion-item>
+    <!--fim-->
+    <ion-item>
+      <ion-label position="floating">E-mail:</ion-label>
+      <ion-input type="email" ngModel email placeholder="abc@gmail.com"></ion-input>
+      <ion-note slot="helper">Enter a valid email</ion-note>
+      <ion-note slot="error">Invalid email</ion-note>
+    </ion-item>
+    <!--fim-->
+    <ion-item>
+      <ion-label position="floating">CPF:</ion-label>
+      <ion-input placeholder="123.456.789-01"></ion-input>
+    </ion-item>
+    <!--fim-->
+    <ion-item counter="true" fill="clear">
+      <ion-label position="floating">Senha:</ion-label>
+      <ion-input maxlength="15" [clearInput]="true" placeholder="Digite a sua senha" type="password"></ion-input>
+    </ion-item>
+    <!--fim-->
+    <ion-item>
+      <ion-label position="floating">Confirma:</ion-label>
+      <ion-input [clearInput]="true" placeholder="Repita sua senha" type="password"></ion-input>
+    </ion-item>
+  </ion-list>
+
+<ion-grid>
+  <ion-row class="ion-centralizar">
+    <ion-button fill="clear"><u>Entrar</u></ion-button>
+  </ion-row>
+  <ion-row class="ion-centralizar">
+      <ion-label><a href="#" class="noDecoration">Já tem uma conta?</a></ion-label>
+  </ion-row>
+</ion-grid>
+
+</ion-content>
