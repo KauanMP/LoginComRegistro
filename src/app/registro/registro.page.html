@@ -1,50 +1,80 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar style="padding: 0">
     <ion-img src="https://c.pxhere.com/photos/fe/a6/photo-1618584.jpg!d" alt="#"></ion-img>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-item color="warning">
-    <ion-label class="centralizarTexto"><strong>Registro</strong></ion-label>
-  </ion-item>
   <!--fim-->
-  <ion-list>
-    <ion-item>
-      <ion-label position="floating">Nome:</ion-label>
-      <ion-input placeholder="Seu Nome"></ion-input>
-    </ion-item>
-    <!--fim-->
-    <ion-item>
-      <ion-label position="floating">E-mail:</ion-label>
-      <ion-input type="email" ngModel email placeholder="abc@gmail.com"></ion-input>
-      <ion-note slot="helper">Enter a valid email</ion-note>
-      <ion-note slot="error">Invalid email</ion-note>
-    </ion-item>
-    <!--fim-->
-    <ion-item>
-      <ion-label position="floating">CPF:</ion-label>
-      <ion-input placeholder="123.456.789-01"></ion-input>
-    </ion-item>
-    <!--fim-->
-    <ion-item counter="true" fill="clear">
-      <ion-label position="floating">Senha:</ion-label>
-      <ion-input maxlength="15" [clearInput]="true" placeholder="Digite a sua senha" type="password"></ion-input>
-    </ion-item>
-    <!--fim-->
-    <ion-item>
-      <ion-label position="floating">Confirma:</ion-label>
-      <ion-input [clearInput]="true" placeholder="Repita sua senha" type="password"></ion-input>
-    </ion-item>
-  </ion-list>
+  <ion-grid style="padding: 0">
+    <ion-list style="padding: 0">
+      <ion-item color="warning">
+        <ion-label class="centralizarTexto"><strong>Registro</strong></ion-label>
+      </ion-item>
+      <form [formGroup]="formRegistro">
+        <ion-item>
+          <ion-label position="floating">Nome:</ion-label>
+          <ion-input placeholder="Seu Nome" type="name" formControlName="nome"></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let erro of mensagensErro.nome">
+          <span class="msg-erro" *ngIf="nome.errors?.[erro.tipo] && (nome.dirty || nome.touched)">
+            {{erro.aviso}}
+          </span>
+        </ng-container>
+        <!--fim-->
+        <ion-item>
+          <ion-label position="floating">E-mail:</ion-label>
+          <ion-input placeholder="abc@gmail.com" type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let erro of mensagensErro.email">
+          <span class="msg-erro" *ngIf="email.errors?.[erro.tipo] && (email.dirty || email.touched)">
+            {{erro.aviso}}
+          </span>
+        </ng-container>
+        <!--fim-->
+        <ion-item>
+          <ion-label position="floating">CPF:</ion-label>
+          <ion-input placeholder="123.456.789-01" formControlName="cpf"></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let erro of mensagensErro.cpf">
+          <span class="msg-erro" *ngIf="cpf.errors?.[erro.tipo] && (cpf.dirty || cpf.touched)">
+            {{erro.aviso}}
+          </span>
+        </ng-container>
+        <!--fim-->
+        <ion-item counter="true" fill="clear">
+          <ion-label position="floating">Senha:</ion-label>
+          <ion-input placeholder="Digite a sua senha" type="password" formControlName="senha"></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let erro of mensagensErro.senha">
+          <span class="msg-erro" *ngIf="senha.errors?.[erro.tipo] && (senha.dirty || senha.touched)">
+            {{erro.aviso}}
+          </span>
+        </ng-container>
+        <!--fim-->
+        <ion-item>
+          <ion-label position="floating">Confirmar:</ion-label>
+          <ion-input placeholder="Repita sua senha" type="password" formControlName="confirmar"></ion-input>
+        </ion-item>
+        <ng-container *ngFor="let erro of mensagensErro.confirmar">
+          <span class="msg-erro" *ngIf="confirmar.errors?.[erro.tipo] && (confirmar.dirty || confirmar.touched)">
+            {{erro.aviso}}
+          </span>
+        </ng-container>
+        <!--fim-->
+      </form>
+    </ion-list>
+  </ion-grid>
 
-<ion-grid>
-  <ion-row class="ion-centralizar">
-    <ion-button fill="clear"><u>Entrar</u></ion-button>
-  </ion-row>
-  <ion-row class="ion-centralizar">
-      <ion-label><a href="#" class="noDecoration">Já tem uma conta?</a></ion-label>
-  </ion-row>
-</ion-grid>
+  <ion-grid>
+    <ion-row class="ion-centralizar">
+      <ion-button fill="clear"><u>Entrar</u></ion-button>
+    </ion-row>
+    <ion-row class="ion-centralizar">
+      <ion-label style="cursor: pointer" [routerLink]="['/login']" routerDirection="forward" class="noDecoration">Não tem uma conta?</ion-label>
+    </ion-row>
+  </ion-grid>
+
+
 
 </ion-content>

@@ -16,18 +16,18 @@ export class LoginPage implements OnInit {
   mensagensErro = {
     email: [{ tipo: 'required', aviso: 'O campo está vazio' } , { tipo: 'email', aviso: 'Email incorreto'}],
     senha: [{ tipo: 'required', aviso: 'O campo está vazio' } , { tipo: 'senha', aviso: 'Senha incorreto'}],
-  }
+  };
 
   constructor(private formBuilder: FormBuilder) { }
 
   get email() {
     return this.formLogin.get('email');
-    
+
   }
 
   get senha() {
     return this.formLogin.get('senha');
-    
+
   }
 
 
