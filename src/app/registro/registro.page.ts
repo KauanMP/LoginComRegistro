@@ -8,9 +8,9 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class RegistroPage implements OnInit {
 
   formRegistro = this.formBuilder.group({
-    nome:  ['', Validators.required],
+    nome:  ['', Validators.compose([Validators.required, Validators.minLength(3)])],
     email: ['', Validators.compose([Validators.required, Validators.email])],
-    cpf:   ['', Validators.compose([Validators.required, Validators.maxLength(11)])],
+    cpf:   ['', Validators.compose([Validators.required, Validators.maxLength(11), Validators.minLength(11)])],
     senha: ['', Validators.compose([Validators.required, Validators.minLength(9)])],
     confirmar: ['', Validators.compose([Validators.required, Validators.minLength(9)])]
   });
