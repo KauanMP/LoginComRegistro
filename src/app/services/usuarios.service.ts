@@ -7,18 +7,49 @@ import { Injectable } from '@angular/core';
 })
 export class UsuariosService {
 
-  listaUsuario: Usuario[] = [];
+  listaUsuarios: Usuario[] = [];
 
   constructor(private storageService: StorageService) { }
 
+  async login(email: string, senha: string) {
+    this.buscarTodos();
+    let usuario: Usuario;
+    this.listaUsuarios.filter(item => {
+      if (item.email.toLocaleLowerCase() == email.toLocaleLowerCase()){
+        usuario = item;
+      }
+    });
 
-  async salvar() {}
-  async buscarUm() {}
-  async buscarTodos() {}
-  async deletar() {}
+  if (usuario?.senha === senha) {
+    return usuario;
+  }
+  return null;
+}
+  async salvar(usuario: Usuario) {
+    this.buscarTodos();
+    this.listaUsuarios[usuario.id] = usuario;
+    this.storageService.set('usuarios', this.listaUsuarios);
+  }
+  async buscarUm(id: number) {
+    this.buscarTodos();
+    return this.listaUsuarios[id];
+  }
+
+  async buscarTodos() {
+    this.listaUsuarios = (await this.storageService.get('usuarios')) as unknown as Usuario[];
+    if (!this.listaUsuarios) {
+      return [];
+    }
+    return this.listaUsuarios;
+  }
+  async deletar(id: number) {
+    this.buscarTodos();
+    this.listaUsuarios.splice(id, 1);
+    this.storageService.set('usuarios', this.listaUsuarios);
+  }
 
   async salvarID(id: number) {
-    await this.storageService.set('idUsuario', id);
+    this.storageService.set('idUsuario', id);
   }
   async buscarID() {
     const id = await this.storageService.get('idUsuario');
