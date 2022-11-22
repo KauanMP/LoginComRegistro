@@ -68,7 +68,7 @@
 
   <ion-grid>
     <ion-row class="ion-centralizar">
-      <ion-button fill="clear"><u>Entrar</u></ion-button>
+      <ion-button (click)="salvar()" fill="clear"><u>Registrar</u></ion-button>
     </ion-row>
     <ion-row class="ion-centralizar">
       <ion-label style="cursor: pointer" [routerLink]="['/login']" routerDirection="forward" class="noDecoration">Já Tem uma conta?</ion-label>
