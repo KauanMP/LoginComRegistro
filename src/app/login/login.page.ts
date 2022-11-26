@@ -38,17 +38,17 @@ export class LoginPage implements OnInit {
   }
 
   async login() {
-    if (this.formLogin.valid) {
-      const email = this.formLogin.get('email').value;
-      const senha = this.formLogin.get('senha').value;
-      const usuario: Usuario = await this.usuarioService.login(email, senha) as null as Usuario;
-      if (usuario) {
-        this.route.navigateByUrl('/tabs/tab1');
-      } else {
-        alert('E-mail ou Senha Inválidos!');
-    } else {
-        alert('Formulario Inválido')
+      if (this.formLogin.valid) {
+        const email = this.formLogin.get('email').value;
+        const senha = this.formLogin.get('senha').value;
+        const usuario: Usuario = await this.usuarioService.login(email, senha) as null as Usuario;
+        if (usuario) {
+          this.route.navigateByUrl('/tabs/tab1');
+        } else {
+          alert('E-mail ou Senha Inválidos!');
       }
+    } else {
+      alert('Formulario Invalido');
     }
   }
 }
